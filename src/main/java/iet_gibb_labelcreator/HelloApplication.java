@@ -35,7 +35,7 @@ public class HelloApplication extends Application {
         HeizungController controller = new HeizungController(labels);
         AlternativeLabelView alternativeView = new AlternativeLabelView(stage, controller);
         HeizungView view = new HeizungView(stage, controller);    /* Views können nun hier ausgewechselt werden.  */
-        controller.setView(view);
+        controller.setView(alternativeView);
         controller.startView();
     }
     protected List<Heizung> createModels() {
