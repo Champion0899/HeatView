@@ -1,0 +1,69 @@
+@startuml
+
+ch.iet_gibb.labelcreator.application.LabelCreator "0..1" o--> "*"ch.iet_gibb.labelcreator.model.BottleCubic
+class ch.iet_gibb.labelcreator.model.BottleSpherical {
+# int radius
++ <<Create>> BottleSpherical(String,int,int,double)
++ int getRadius()
++ void setRadius(int)
++ double getContents()
++ double getWeight()
++ String toString()
++ String getEtiquette();
+}
+ch.iet_gibb.labelcreator.application.LabelCreator "0..1" o--> "*" ch.iet_gibb.labelcreator.model.BottleCylindrical
+
+class ch.iet_gibb.labelcreator.model.BottleCylindrical {
+# int diameter
++ <<Create>> BottleCylindrical(String,int,int,double)
++ int getDiameter()
++ void setDiameter(int)
++ double getContents()
++ double getWeight()
++ String toString()
++ String getEtiquette();
+}
+ch.iet_gibb.labelcreator.application.LabelCreator "0..1" o--> "*" ch.iet_gibb.labelcreator.model.BottleSpherical
+
+class ch.iet_gibb.labelcreator.application.LabelCreator {
++ {static} void main(String[])
+}
+abstract class ch.iet_gibb.labelcreator.model.BottleContainer {
+# String liquidName
+# int height
+# double density
++ <<Create>> BottleContainer(String,int,double)
++ String getLiquidName()
++ void setLiquidName(String)
+# void checkNameLiquid(String)
++ int getHeight()
++ void setHeight(int)
++ double getDensity()
++ void setDensity(double)
+
+}
+class ch.iet_gibb.labelcreator.model.BottleCubic {
+# int width
++ <<Create>> BottleCubic(String,int,int,double)
++ int getWidth()
++ void setWidth(int)
++ double getContents()
++ double getWeight()
++ String toString()
++ String getEtiquette();
+}
+ch.iet_gibb.labelcreator.application.LabelCreator "1" *--> "*" ch.iet_gibb.labelcreator.printer.Print
+ch.iet_gibb.labelcreator.printer.Print "1" --> "*" ch.iet_gibb.labelcreator.model.BottleSpherical
+ch.iet_gibb.labelcreator.printer.Print "1" --> "*" ch.iet_gibb.labelcreator.model.BottleCylindrical
+ch.iet_gibb.labelcreator.printer.Print "1" --> "*" ch.iet_gibb.labelcreator.model.BottleCubic
+class ch.iet_gibb.labelcreator.printer.Print {
++ void print(BottleContainer )
++ void printEtiquette(String)
+}
+
+
+ch.iet_gibb.labelcreator.model.BottleContainer <|-- ch.iet_gibb.labelcreator.model.BottleSpherical
+
+ch.iet_gibb.labelcreator.model.BottleContainer <|-- ch.iet_gibb.labelcreator.model.BottleCylindrical
+ch.iet_gibb.labelcreator.model.BottleContainer <|-- ch.iet_gibb.labelcreator.model.BottleCubic
+@enduml
