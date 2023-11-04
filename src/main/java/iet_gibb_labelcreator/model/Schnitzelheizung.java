@@ -44,6 +44,10 @@ public class Schnitzelheizung extends Heizung{
         }
     }
 
+    /**
+     * Macht die Liste für die Properties. Die werden dann an der View weitergegeben.
+     * @return properties
+     */
     @Override
     public List<Property> getProperties() {
         List<Property> properties = super.getProperties();
@@ -52,6 +56,10 @@ public class Schnitzelheizung extends Heizung{
         return properties;
     }
 
+    /**
+     * Der Titel von der Heizung
+     * @return "Schnitzelheizung"
+     */
     @Override
     public String getTitle() {
         return "Schnitzelheizung";
@@ -81,10 +89,18 @@ public class Schnitzelheizung extends Heizung{
                 " m3: "+ getM3() + "\n";
     }
 
+    /**
+     * Getter für Holzart
+     * @return holzart
+     */
     public String getHolzart() {
         return holzart;
     }
 
+    /**
+     * Setter für Holzart
+     * @param holzart
+     */
     public void setHolzart(String holzart) {
         this.holzart = holzart;
     }

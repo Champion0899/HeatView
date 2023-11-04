@@ -5,7 +5,6 @@ import iet_gibb_labelcreator.model.Heizung;
 import iet_gibb_labelcreator.model.Holzheizung;
 import iet_gibb_labelcreator.model.Pelletsheizung;
 import iet_gibb_labelcreator.model.Schnitzelheizung;
-import iet_gibb_labelcreator.property.InterfaceHeizung;
 import iet_gibb_labelcreator.view.AlternativeLabelView;
 import iet_gibb_labelcreator.view.HeizungView;
 import javafx.application.Application;
@@ -23,12 +22,8 @@ import static javafx.application.Application.launch;
  @since      07.09.2023
  */
 
-public class HelloApplication extends Application {
+public class Main extends Application {
     private static Heizung heizung;
-
-
-
-
     @Override
     public void start(Stage stage) throws Exception {
         List<Heizung> labels = createModels();

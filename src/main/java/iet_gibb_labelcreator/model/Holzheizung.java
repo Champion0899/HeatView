@@ -26,9 +26,7 @@ public class Holzheizung extends  Heizung{
      */
     private String holzart;
 
-    /**
-     * Mit den vorhanden Werten, werden die weiteren Attribute berechnet und abgefüllt. Es wird auch überprüft welcher Holztyp es ist und je nach dem anders berechnet.
-     */
+
 
     /**
      * Konstruktor für das Object Holzheizung. Dazu wird der Input validiert und wenn der Input richtig ist, wird die Umrechnung gestartet.
@@ -45,6 +43,10 @@ public class Holzheizung extends  Heizung{
         }
     }
 
+    /**
+     * Setzt die Properties für die View. Die Properties sind alle Werte die die Heizung hat.
+     * @return properties
+     */
     @Override
     public List<Property> getProperties() {
         List<Property> properties = super.getProperties();
@@ -59,7 +61,10 @@ public class Holzheizung extends  Heizung{
         return "Holzheizung";
     }
 
-    private void umrechnung(){
+    /**
+     * Mit den vorhanden Werten, werden die weiteren Attribute berechnet und abgefüllt. Es wird auch überprüft welcher Holztyp es ist und je nach dem anders berechnet.
+     */
+    public void umrechnung(){
         setKg(getkWh()/4d);
         if (this.holzart=="Buche"){
             setM3(getKg()/500);
@@ -75,7 +80,7 @@ public class Holzheizung extends  Heizung{
      * Validiert denn Input. Generel wird immer überprüft ob der Input null ist, aber man kann noch weitere Bedingungen hinzufügen
      * @return boolean
      */
-    private boolean validation(){
+    public boolean validation(){
          if (getHolzart()== null) {
             return false;
         }
@@ -96,19 +101,36 @@ public class Holzheizung extends  Heizung{
                 " m3: "+ getM3() + "\n";
     }
 
+    /**
+     * Getter für Ster
+     * @return ster
+     */
     public Double getSter() {
         return ster;
     }
+
+    /**
+     * Setter für Ster
+     * @param ster
+     */
 
     public void setSter(Double ster) {
         this.ster = ster;
     }
 
-
+    /**
+     * Getter für Holzart
+     * @return holzart
+     */
 
     public String getHolzart() {
         return holzart;
     }
+
+    /**
+     * Setter für Holzart
+     * @param holzart
+     */
 
     public void setHolzart(String holzart) {
         this.holzart = holzart;

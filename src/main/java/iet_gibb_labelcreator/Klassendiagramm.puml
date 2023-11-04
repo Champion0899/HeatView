@@ -1,0 +1,82 @@
+@startuml
+class iet_gibb_labelcreator.controller.HeizungController {
+# List<Heizung> models
+# ControllerViewInterface view
+# int currentHeizung
++ <<Create>> HeizungController(List<Heizung>)
++ void setView(ControllerViewInterface)
++ void startView()
++ void showNextLabel()
++ String getLabel()
++ void handle(ActionEvent)
+}
+class iet_gibb_labelcreator.model.Pelletsheizung {
++ <<Create>> Pelletsheizung(Integer)
++ List<Property> getProperties()
++ String getTitle()
++ void umrechnung()
++ boolean validation()
++ String toString()
+}
+class iet_gibb_labelcreator.model.Holzheizung {
+- Double ster
+- String holzart
++ <<Create>> Holzheizung(Integer,String)
++ List<Property> getProperties()
++ String getTitle()
+- void umrechnung()
+- boolean validation()
++ String toString()
++ Double getSter()
++ void setSter(Double)
++ String getHolzart()
++ void setHolzart(String)
+}
+abstract class iet_gibb_labelcreator.model.Heizung {
+- Double m3
+- Integer kWh
+- Double kg
++ <<Create>> Heizung(Integer)
+# void checkKWhValue(Integer)
++ List<Property> getProperties()
++ Double getM3()
++ void setM3(Double)
++ Integer getkWh()
++ void setkWh(Integer)
++ Double getKg()
++ void setKg(Double)
+}
+class iet_gibb_labelcreator.Main {
++ {static} void main(String[])
+}
+class iet_gibb_labelcreator.model.Schnitzelheizung {
+- String holzart
++ <<Create>> Schnitzelheizung(Integer,String)
++ void umrechnung()
++ List<Property> getProperties()
++ String getTitle()
++ boolean validation()
++ String toString()
++ String getHolzart()
++ void setHolzart(String)
+}
+
+class  iet_gibb_labelcreator.Printer.printer{
++void print()
+}
+
+iet_gibb_labelcreator.Main "1"*-->"*" iet_gibb_labelcreator.controller.HeizungController
+
+iet_gibb_labelcreator.controller.HeizungController "1"-->"*" iet_gibb_labelcreator.Printer.printer
+iet_gibb_labelcreator.controller.HeizungController "0..1"-->"*" iet_gibb_labelcreator.model.Pelletsheizung
+iet_gibb_labelcreator.controller.HeizungController "0..1"-->"*" iet_gibb_labelcreator.model.Holzheizung
+iet_gibb_labelcreator.controller.HeizungController "0..1"-->"*" iet_gibb_labelcreator.model.Schnitzelheizung
+iet_gibb_labelcreator.Printer.printer "1"-->"*" iet_gibb_labelcreator.controller.HeizungController
+iet_gibb_labelcreator.Main "1"--> "*" iet_gibb_labelcreator.model.Schnitzelheizung
+iet_gibb_labelcreator.Main "1"--> "*" iet_gibb_labelcreator.model.Holzheizung
+iet_gibb_labelcreator.Main "1"--> "*" iet_gibb_labelcreator.model.Pelletsheizung
+
+iet_gibb_labelcreator.model.Heizung <|-- iet_gibb_labelcreator.model.Pelletsheizung
+iet_gibb_labelcreator.model.Heizung <|-- iet_gibb_labelcreator.model.Holzheizung
+iet_gibb_labelcreator.model.Heizung <|-- iet_gibb_labelcreator.model.Schnitzelheizung
+@enduml

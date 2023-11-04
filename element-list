@@ -1,0 +1,6 @@
+module:com.example.heatcreator
+iet_gibb_labelcreator
+iet_gibb_labelcreator.controller
+iet_gibb_labelcreator.model
+iet_gibb_labelcreator.property
+iet_gibb_labelcreator.view

@@ -26,11 +26,21 @@ public class Pelletsheizung extends Heizung{
         }
     }
 
+
+    /**
+     * Setzt die Properties für die View. Die Properties sind alle Werte die die Heizung hat.
+     * @return properties
+     */
     @Override
     public List<Property> getProperties() {
         List<Property> properties = super.getProperties();
         return properties;
     }
+
+    /**
+     * Setzt den Titel der Heizung.
+     * @return "Pelletheizung"
+     */
     @Override
     public String getTitle() {
         return "Pelletheizung";
